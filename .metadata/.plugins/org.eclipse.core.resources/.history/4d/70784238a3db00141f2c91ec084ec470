@@ -1,0 +1,10 @@
+volatile unsigned char temp, pressed, toggle;
+volatile unsigned char buffer_test[16];
+volatile unsigned char index_test;
+
+# include <avr/pgmspace.h>
+
+//static char new_sms[] PROGMEM = "AT+CMGS=\"+48691928877\"\010\013";
+//static char PROGMEM message[] = "DUPA";
+char string_1[] PROGMEM = "String 1";
+

@@ -1,0 +1,13 @@
+/*
+ * adc.c
+ *
+ *  Created on: 21 maj 2015
+ *      Author: Marcin
+ */
+#include "adc.h"
+
+void init_adc()
+{
+
+}
+

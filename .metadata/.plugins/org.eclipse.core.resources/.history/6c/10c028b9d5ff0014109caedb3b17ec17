@@ -1,0 +1,140 @@
+/*
+ * main.c
+ *
+ *  Created on: 02-04-2015
+ *      Author: Marcin
+ */
+
+#include <avr/io.h>
+#include <util/delay.h>
+#include "HD44780.h"
+#include "atkeyboard.h"
+#include "globals.h"
+#include "string.h"
+#include "scancodes.h"
+#include "usart.h"
+#include "LED.h"
+#include "gsm.h"
+#include "lcd.h"
+#include "menu.h"
+#include "string.h"
+#include <math.h>
+
+#define OUT1 (1<<PD5)
+#define OUT2 (1<<PD4)
+
+volatile uint8_t bufor_sinus[256];//bufor na wartoœci funkcji sinus
+volatile uint8_t bufor_pila[256];//bufor na wartoœci funkcji pi³a
+volatile uint8_t indeks = 0;  //indeks bufora do odczytu w przerwaniu
+volatile uint8_t dlugosc =2;
+volatile uint8_t dlugosc_max=0;
+
+int main(void) {
+	MCUCSR |=(1<<JTD);
+	MCUCSR |=(1<<JTD);
+	//extern volatile unsigned char received[40];
+	//extern volatile unsigned char to_send[40];
+
+	strcpy(LCD_top,"                ");
+	strcpy(LCD_bottom,"                ");
+	LEDs_init();
+	LCD_Initalize();
+	initATkbd();
+	USART_Init(51); //9600 at 8MHz
+
+
+	   DDRD |= OUT1 | OUT2;//Wyjœcia Generatora
+		LED_Red_ON();
+
+
+
+
+	   //Inicjalizacja Timer1 (PWM)
+	   TCCR1A |= (1<<COM1A1) //Zmiana stanu wyjœcia OC1A na niski przy porównaniu A
+	          |  (1<<COM1B1) //Zmiana stanu wyjœcia OC1B na niski przy porównaniu B
+	          |  (1<<WGM11); //Tryb 14 (FAST PWM, TOP=ICR1)
+
+	   TCCR1B |= (1<<WGM13) | (1<<WGM12)  //Tryb 14 (FAST PWM, TOP=ICR1)
+	          |  (1<<CS11);  //preskaler = 8
+	   ICR1 = 254; //Wartoœæ maksymalna (dla trybu 14)
+	               //a wiêc czêstotliwoœæ = CLK/ICR1=8kHz
+
+	   OCR1A=127;  //Wartoœæ porównania A (Wyjœcie OC1A - PB1), wype³nenie = 33%
+	   OCR1B=127;  //Wartoœæ porównania B (Wyjœcie OC1B - PBB), wype³nenie = 66%
+
+	   //Inicjalizacja Timer0 (zmiana wspó³czynnika wype³nienia)
+	   TCCR0 |= (1<<CS00);  // Ÿród³em CLK, brak preskalera
+	   TIMSK |= (1<<TOIE0);    //Przerwanie overflow (przepe³nienie timera)
+
+
+
+	   unsigned char x;
+
+	   //Tworzy bufor funkcji Sinus
+	   float temp;
+	   for(x=0; x<255; x++)
+	   {
+		   //bufor_sinus[x]=(unsigned int)(128+126*sin(6.26/256*x));
+		   //temp=sin(2*M_PI*x)*126+127;
+		   temp=sin(x*6.26/254*6)*126+128;
+		   bufor_sinus[x]= (int)temp;
+
+	   }
+	   x=bufor_sinus[255];
+	   unsigned char str_temp[5];
+	   itoa(x, str_temp, 10);
+	   str_temp[4]='\0';
+
+	   lcd_display(&str_temp," ");
+
+	   //Tworzy bufor funkcji pi³a
+	   for(x=0; x<256; x++) bufor_pila[x]=x;
+
+
+
+	sei();
+
+
+
+	_delay_ms(500); //wait for all devices to boot
+
+
+
+
+	while (1)
+	{
+	if (dlugosc_max<50)
+		dlugosc_max+=10;
+	else
+		dlugosc_max=10;
+	_delay_ms(100);
+	//menu();
+	//mode_1();
+	//lcd_display(LCD_top,LCD_bottom);
+	//_delay_ms(100);
+
+	}
+
+}
+
+//Procedura obs³ugi przerwania od przepe³nienia Timera0
+ISR(TIMER0_OVF_vect)
+{
+   if (dlugosc==0)
+   {
+   OCR1A=bufor_sinus[indeks]; //przepisuje do rejestru porównia wartoœæ funkcji
+   OCR1B=bufor_pila[indeks];  //przepisuje do rejestru porównia wartoœæ funkcji
+
+   if(indeks<254)//inkrementuje indeks bufora
+      indeks++;
+   else//jeœli koniec bufora to powrót na pocz¹tek
+      indeks=0;
+   }
+
+   if (dlugosc<dlugosc_max)
+	   dlugosc+=10;
+   else
+	   dlugosc=0;
+
+
+}

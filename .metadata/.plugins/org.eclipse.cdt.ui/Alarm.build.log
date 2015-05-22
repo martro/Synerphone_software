@@ -1,0 +1,13 @@
+19:22:12 **** Incremental Build of configuration Release for project Alarm ****
+Info: Internal Builder is used for build
+avr-gcc "-IC:\\WinAVR-20100110\\avr\\include" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega8 -DF_CPU=1000000UL -c -o main.o "..\\main.c" 
+avr-gcc -Wl,-Map,Alarm.map -mmcu=atmega8 -o Alarm.elf main.o 
+-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Alarm.elf "..\\Alarm.elf" Alarm.hex 
+Cannot run program "-avr-objcopy": Launching failed
+
+Error: Program "-avr-objcopy" not found in PATH
+PATH=[C:\WinAVR-20100110\bin;C:\Program Files (x86)\GnuWin32\bin;C:/Program Files/Java/jre1.8.0_40/bin/server;C:/Program Files/Java/jre1.8.0_40/bin;C:/Program Files/Java/jre1.8.0_40/lib/amd64;C:\Program Files (x86)\Qucs\bin;C:\WinAVR-20100110\utils\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\MATLAB\R2014a\runtime\win64;C:\Program Files\MATLAB\R2014a\bin;C:\Program Files\MATLAB\R2014a\polyspace\bin;C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Qt_projekty\omni_drive\SDK;C:\Program Files (x86)\Toshiba\Bluetooth Toshiba Stack\sys\;C:\Program Files (x86)\Toshiba\Bluetooth Toshiba Stack\sys\x64\;C:\Program Files (x86)\mingw32\bin;c:\iverilog\bin;c:\iverilog\gtkwave\bin;C:\Program Files (x86)\CMake\bin;C:\MinGW\bin;C:\Program Files\eclipse]
+
+
+19:22:13 Build Finished (took 510ms)
+

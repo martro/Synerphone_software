@@ -1,0 +1,21 @@
+/*
+ * adc.c
+ *
+ *  Created on: 21 maj 2015
+ *      Author: Marcin
+ */
+#include "adc.h"
+
+void init_adc()
+{
+	ADMUX |= (1<<REFS0);//VCC as reference
+	ADMUX |= (1<<MUX1) | (1<<MUX0);//adc 3
+
+
+	ADCSRA |= (1<<ADEN);//adc enable
+
+	ADCSRA |= (1<<ADSC);//start converstion
+
+	ADCSRA |= (1<<ADIE);//interrupt enable
+}
+

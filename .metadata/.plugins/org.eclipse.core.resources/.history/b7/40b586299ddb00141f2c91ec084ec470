@@ -1,0 +1,17 @@
+#define LED_Red_DIR  	DDRC
+#define LED_Red_PORT 	PORTC
+#define LED_Red_PIN  	PINC
+#define LED_Red	 		(1 << PC3)
+
+#define LED_Grn_DIR  	DDRC
+#define LED_Grn_PORT 	PORTC
+#define LED_Grn_PIN  	PINC
+#define LED_Grn	 		(1 << PC2)
+
+
+void LED_Red_ON(){ LED_Red_PORT |= LED_Red;};
+
+
+
+
+void LEDs_init(){LED_Red_PORT|= (1<<PC2) | (1<<PC3);};

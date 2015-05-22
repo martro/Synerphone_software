@@ -1,0 +1,20 @@
+19:44:13 **** Incremental Build of configuration Release for project glosnik ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 glosnik.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    3884 bytes (23.7% Full)
+(.text + .data + .bootloader)
+
+Data:        404 bytes (39.5% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+19:44:14 Build Finished (took 290ms)
+

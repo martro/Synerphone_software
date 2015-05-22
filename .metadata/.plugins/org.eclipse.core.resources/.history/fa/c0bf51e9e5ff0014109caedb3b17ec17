@@ -1,0 +1,49 @@
+/*
+ * main.c
+ *
+ *  Created on: 02-04-2015
+ *      Author: Marcin
+ */
+
+#include <avr/io.h>
+#include <util/delay.h>
+#include "HD44780.h"
+#include "atkeyboard.h"
+#include "globals.h"
+#include "string.h"
+#include "scancodes.h"
+#include "usart.h"
+#include "LED.h"
+#include "gsm.h"
+#include "lcd.h"
+#include "menu.h"
+#include "adc.h"
+#include "string.h"
+#include <math.h>
+
+int main(void) {
+	MCUCSR |=(1<<JTD);
+	MCUCSR |=(1<<JTD);
+	//extern volatile unsigned char received[40];
+	//extern volatile unsigned char to_send[40];
+
+	strcpy(LCD_top,"                ");
+	strcpy(LCD_bottom,"                ");
+	LEDs_init();
+	LCD_Initalize();
+	initATkbd();
+	USART_Init(51); //9600 at 8MHz
+	_delay_ms(500); //wait for all devices to boot
+	sei();
+
+
+	while (1)
+	{
+	_delay_ms(1800);
+	LED_Red_ON();
+	_delay_ms(200);
+	LED_Red_OFF();
+	ADCSRA |= (1<<ADSC);//start converstion
+	}
+
+}

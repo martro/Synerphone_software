@@ -1,0 +1,35 @@
+/*
+ * main.c
+ *
+ *  Created on: 21 maj 2015
+ *      Author: Marcin
+ */
+#include <avr/io.h>
+#include <util/delay.h>
+#include "HD44780.h"
+#include "globals.h"
+#include "string.h"
+#include "LED.h"
+#include "lcd.h"
+#include "adc.h"
+#include <math.h>
+
+void main(void)
+{
+	LCD_Initalize();
+	init_adc();
+	_delay_ms(500);
+
+	char tekst[]="aaaaa";
+
+
+	int a=4;
+
+	itoa(a,&tekst,10);
+
+	lcd_display(&tekst,"dupa");
+
+	while(1);
+
+}
+

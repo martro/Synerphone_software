@@ -1,0 +1,14 @@
+/*
+ * main.c
+ *
+ *  Created on: 02-04-2015
+ *      Author: Marcin
+ */
+
+#include <avr/io.h>
+
+int main(void)
+{
+	DDRB|=_BV(0);
+	while(1);
+}
