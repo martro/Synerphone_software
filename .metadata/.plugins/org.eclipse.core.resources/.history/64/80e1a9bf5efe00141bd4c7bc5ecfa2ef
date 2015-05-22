@@ -1,0 +1,12 @@
+/*
+ * menu.c
+ *
+ *  Created on: 19 maj 2015
+ *      Author: Marcin
+ */
+
+
+void menu(void)
+{
+	lcd_display("|TRYB SERWISOWY|",""|TRYB SERWISOWY|");
+}

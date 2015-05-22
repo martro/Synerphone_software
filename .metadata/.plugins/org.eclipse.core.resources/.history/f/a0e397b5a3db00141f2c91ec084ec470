@@ -1,0 +1,99 @@
+/*
+ * main.c
+ *
+ *  Created on: 02-04-2015
+ *      Author: Marcin
+ */
+
+#include <avr/io.h>
+#include <util/delay.h>
+#include "HD44780.h"
+#include "atkeyboard.h"
+#include "globals.h"
+#include "string.h"
+#include "scancodes.h"
+#include "usart.h"
+#include "LED.h"
+
+
+int main(void)
+{
+	LEDs_init();
+	LCD_Initalize();
+	initATkbd();
+	USART_Init(51);//9600 at 8MHz
+	sei();
+
+	char i;
+
+	for(i=0;i<=16;i++)
+		buffer_test[i]=' ';
+
+	_delay_ms(500); //wait for all devices to boot
+
+	char znak[16];
+
+	znak[0]=' ';
+	znak[1]='\0';
+	//znak=getATkbd();
+
+	_delay_ms(500);
+	LCD_WriteText("              ");
+	LCD_GoTo(0,1);
+
+
+	char str[16];
+
+	toggle=1;
+	unsigned char test,bufor;
+	char literka[3];
+
+	literka[0]=' ';
+	literka[1]=']';
+	literka[2]='\0';
+
+
+
+
+
+	while(1)
+	{
+		while(1)
+		{
+			LCD_GoTo(0,0);
+			LCD_WriteText(buffer_test);
+		}
+		if (pressed)
+		{
+			itoa(temp, str, 10);
+			LCD_GoTo(0,1);
+			LCD_WriteText("   ");
+			LCD_GoTo(0,1);
+			LCD_WriteText(str);
+			LCD_GoTo(0,0);
+			LCD_WriteText("[");
+			bufor=pgm_read_byte(&scancodes[temp]);
+			literka[0]=bufor;
+			LCD_WriteText(literka);
+			pressed=0;
+
+
+
+		LCD_GoTo(4,1);
+		if (toggle)
+		{
+			LCD_WriteText("      >>  ");
+			PORTC|=(1<<PC2);
+			PORTC &=~(1<<PC3);
+		}
+		else
+		{
+			LCD_WriteText("        <<");
+			PORTC&=~(1<<PC2);
+			PORTC|=(1<<PC3);
+		}
+		}
+		_delay_ms(10);
+
+	}
+}

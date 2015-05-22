@@ -1,0 +1,15 @@
+/*
+ * LCD.h
+ *
+ *  Created on: 5 kwi 2015
+ *      Author: Marcin
+ */
+
+#ifndef LCD_H_
+#define LCD_H_
+
+# include <avr/pgmspace.h>
+
+static unsigned char PROGMEM commands[][];
+
+#endif /* LCD_H_ */

@@ -1,0 +1,14 @@
+/*
+ * commands.h
+ *
+ *  Created on: 5 kwi 2015
+ *      Author: Marcin
+ */
+
+#ifndef COMMANDS_H_
+#define COMMANDS_H_
+
+
+static char new_shms[] = "AT+CMGS=\"+48691928877\"\010\013";
+
+#endif /* COMMANDS_H_ */

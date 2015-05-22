@@ -1,0 +1,16 @@
+/*
+ * menu.c
+ *
+ *  Created on: 19 maj 2015
+ *      Author: Marcin
+ */
+
+#include "menu.h"
+
+void menu(void)
+{
+	lcd_display("|TRYB SERWISOWY|","|##############|");
+
+	if (keyboard_int==90)
+		lcd_display("aaa","bbb");
+}

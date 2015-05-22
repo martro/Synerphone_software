@@ -1,0 +1,12 @@
+#Thu Apr 02 12:32:22 CEST 2015
+eclipse.preferences.version=1
+environment/buildEnvironmentInclude/de.innot.avreclipse.configuration.app.release.412676331/CPATH/delimiter=;
+environment/buildEnvironmentInclude/de.innot.avreclipse.configuration.app.release.412676331/CPATH/operation=remove
+environment/buildEnvironmentInclude/de.innot.avreclipse.configuration.app.release.412676331/C_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/de.innot.avreclipse.configuration.app.release.412676331/C_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/de.innot.avreclipse.configuration.app.release.412676331/append=true
+environment/buildEnvironmentInclude/de.innot.avreclipse.configuration.app.release.412676331/appendContributed=true
+environment/buildEnvironmentLibrary/de.innot.avreclipse.configuration.app.release.412676331/LIBRARY_PATH/delimiter=;
+environment/buildEnvironmentLibrary/de.innot.avreclipse.configuration.app.release.412676331/LIBRARY_PATH/operation=remove
+environment/buildEnvironmentLibrary/de.innot.avreclipse.configuration.app.release.412676331/append=true
+environment/buildEnvironmentLibrary/de.innot.avreclipse.configuration.app.release.412676331/appendContributed=true

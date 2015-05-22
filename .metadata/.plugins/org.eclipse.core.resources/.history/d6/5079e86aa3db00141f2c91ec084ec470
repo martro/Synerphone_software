@@ -1,0 +1,12 @@
+# include <avr/pgmspace.h>
+
+volatile unsigned char temp, pressed, toggle;
+volatile unsigned char buffer_test[16];
+volatile unsigned char index_test;
+
+
+
+//static char new_sms[] PROGMEM = "AT+CMGS=\"+48691928877\"\010\013";
+//static char PROGMEM message[] = "DUPA";
+const char signMessage[] PROGMEM  = {"I AM PREDATOR,  UNSEEN COMBATANT. CREATED BY THE UNITED STATES DEPART"};
+

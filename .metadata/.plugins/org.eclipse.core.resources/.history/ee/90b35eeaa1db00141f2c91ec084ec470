@@ -1,0 +1,7 @@
+volatile unsigned char temp, pressed, toggle;
+volatile unsigned char buffer_test[16];
+volatile unsigned char index_test;
+
+
+char new_sms[] PROGMEM = "AT+CMGS="+48691928877\032";
+

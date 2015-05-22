@@ -1,0 +1,4 @@
+volatile unsigned char temp, pressed, toggle;
+volatile unsigned char buffer_test[16];
+volatile unsigned char index_test;
+

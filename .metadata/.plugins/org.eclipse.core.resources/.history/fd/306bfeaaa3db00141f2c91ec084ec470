@@ -1,0 +1,19 @@
+/*
+ * commands.h
+ *
+ *  Created on: 5 kwi 2015
+ *      Author: Marcin
+ */
+
+#ifndef COMMANDS_H_
+#define COMMANDS_H_
+
+# include <avr/pgmspace.h>
+
+static char new_sms[] PROGMEM = "AT+CMGS=\"+48691928877\"\010\013";
+//static char PROGMEM message[] = "DUPA";
+//const char signMessage[] PROGMEM  = {"I AM PREDATOR,  UNSEEN COMBATANT. CREATED BY THE UNITED STATES DEPART"};
+
+
+
+#endif /* COMMANDS_H_ */

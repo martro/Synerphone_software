@@ -1,0 +1,21 @@
+/*
+ * adc.c
+ *
+ *  Created on: 21 maj 2015
+ *      Author: Marcin
+ */
+#include "adc.h"
+
+void init_adc()
+{
+	DDRA &= ~(1<<PA0);//adc0 pin as input
+
+	ADMUX |= (1<<REFS0);//VCC as reference
+
+
+	ADCSRA |= (1<<ADEN);//adc enable
+
+
+	ADCSRA |= (1<<ADIE);//interrupt enable
+}
+

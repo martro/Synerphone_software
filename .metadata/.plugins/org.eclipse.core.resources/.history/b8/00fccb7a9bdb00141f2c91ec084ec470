@@ -1,0 +1,13 @@
+volatile unsigned char temp, pressed, toggle;
+volatile unsigned char buffer_test[16];
+volatile unsigned char index_test;
+
+#define LED_Red_DIR  	DDRC
+#define LED_Red_PORT 	PORTC
+#define LED_Red_PIN  	PINC
+#define LED_Red	 		(1 << PC3)
+
+#define LED_Grn_DIR  	DDRC
+#define LED_Grn_PORT 	PORTC
+#define LED_Grn_PIN  	PINC
+#define LED_Grn	 		(1 << PC2)
