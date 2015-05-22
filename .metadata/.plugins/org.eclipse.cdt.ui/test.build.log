@@ -1,9 +1,27 @@
-21:12:41 **** Incremental Build of configuration Release for project test ****
+20:04:32 **** Incremental Build of configuration Release for project test ****
 make all 
-Building file: ../adc.c
+Building file: ../main.c
 Invoking: AVR Compiler
-avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=8000000UL -MMD -MP -MF"adc.d" -MT"adc.d" -c -o "adc.o" "../adc.c"
-Finished building: ../adc.c
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.d" -c -o "main.o" "../main.c"
+In file included from ../atkeyboard.h:4,
+                 from ../main.c:11:
+../scancodes.h:105:7: warning: multi-line comment
+../main.c: In function 'main':
+../main.c:30: warning: passing argument 1 of 'strcpy' discards qualifiers from pointer target type
+../main.c:31: warning: passing argument 1 of 'strcpy' discards qualifiers from pointer target type
+../main.c:40: warning: pointer targets in passing argument 1 of 'USART_Transmit_string' differ in signedness
+../main.c:46: warning: passing argument 1 of 'strcpy' discards qualifiers from pointer target type
+../main.c:54: warning: passing argument 1 of 'strcpy' discards qualifiers from pointer target type
+../main.c:55: warning: passing argument 1 of 'USART_Transmit_string' discards qualifiers from pointer target type
+../main.c:58: warning: passing argument 1 of 'strcpy' discards qualifiers from pointer target type
+../main.c:59: warning: passing argument 1 of 'USART_Transmit_string' discards qualifiers from pointer target type
+../main.c:62: warning: passing argument 1 of 'strcpy' discards qualifiers from pointer target type
+../main.c:64: warning: passing argument 1 of 'strcat' discards qualifiers from pointer target type
+../main.c:65: warning: passing argument 1 of 'strcat' discards qualifiers from pointer target type
+../main.c:66: warning: passing argument 1 of 'USART_Transmit_string' discards qualifiers from pointer target type
+../main.c:74: warning: passing argument 1 of 'lcd_display' discards qualifiers from pointer target type
+../main.c:74: warning: passing argument 2 of 'lcd_display' discards qualifiers from pointer target type
+Finished building: ../main.c
  
 Building target: test.elf
 Invoking: AVR C Linker
@@ -28,15 +46,15 @@ AVR Memory Usage
 ----------------
 Device: atmega16
 
-Program:    4058 bytes (24.8% Full)
+Program:    3480 bytes (21.2% Full)
 (.text + .data + .bootloader)
 
-Data:        309 bytes (30.2% Full)
+Data:        359 bytes (35.1% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
 
-21:12:42 Build Finished (took 1s.347ms)
+20:04:39 Build Finished (took 6s.241ms)
 

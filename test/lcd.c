@@ -7,6 +7,7 @@
 #include "lcd.h"
 
 void lcd_display(char* top, char* bottom) {
+	mode_2();
 	LCD_GoTo(0, 0);
 	LCD_WriteText(top);
 	LCD_GoTo(0, 1);

@@ -33,23 +33,45 @@ int main(void) {
 	LCD_Initalize();
 	initATkbd();
 	USART_Init(51); //9600 at 8MHz
-	_delay_ms(500); //wait for all devices to boot
+	_delay_ms(2000); //wait for all devices to boot
+	_delay_ms(2000);
+	_delay_ms(2000);
+	_delay_ms(2000);
+	USART_Transmit_string("\r\n");
+	_delay_ms(2000);
+
 	sei();
 	init_adc();
 
+	strcpy(to_send, "AT\n");
 
 	char tekst[4];
 
+	int i=0;
+
 	while (1)
 	{
-	_delay_ms(ADC);
+	strcpy(to_send, "AT+CMGF=1\r\n");
+	USART_Transmit_string(to_send);
+	_delay_ms(3000);
 	LED_Red_ON();
-	_delay_ms(ADC);
+	strcpy(to_send, "AT+CMGS=\"+48691928877\"\r\n");
+	USART_Transmit_string(to_send);
+	_delay_ms(2000);
 	LED_Red_OFF();
-	ADCSRA |= (1<<ADSC);//start conversion
+	strcpy(to_send,"dupa");
+	itoa(i,tekst,10);
+	strcat(to_send,tekst);
+	strcat(to_send, "\x1A\r\n");
+	USART_Transmit_string(to_send);
+	_delay_ms(8000);
+	i++;
 
-	//itoa(ADC,tekst,10);
-	lcd_display("b","a");
+	//USART_Transmit('a');
+
+	_delay_ms(2000);
+
+	lcd_display(LCD_top,LCD_bottom);
 	}
 
 }

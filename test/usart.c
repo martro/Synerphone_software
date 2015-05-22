@@ -24,7 +24,10 @@ void USART_Transmit_string(unsigned char* string) {
 	unsigned char i;
 
 	for (i = 0; i < strlen(string); i++)
+	{
 		USART_Transmit(string[i]);
+		_delay_ms(100);
+	}
 }
 
 unsigned char USART_Receive(void) {
